@@ -34,24 +34,19 @@ export default class Home extends React.Component {
         });
     }
 
-    fetchName(){
-
-    }
-
     addFriend(){
-      const apiUrl = 'https://api.namefake.com/'
+      const apiUrl = 'https://api.weatherapi.com/v1/current.json?key=d5c90f6ceef249ee9e9211459210901&q=Cancun'
 
       fetch(apiUrl)
         .then((response) => response.json())
-        .then((data) => console.log('This is your data', data));
-
-
-      this.setState({
-        friends: [
-          ...this.state.friends,
-          {id: "04", name: 'jo'}
-        ]
-     });
+        .then((data) => {
+            this.setState({
+              friends: [
+                ...this.state.friends,
+                {id: "05", name: data.current.feelslike_f}
+                ]
+             })
+         })
     }
 
   render(){

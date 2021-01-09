@@ -7,7 +7,7 @@ export default function Home() {
   return (
   <div>
   <Nav/>
-  <div class="content">
+  <div className="content">
     <h1>This is the homepage!</h1>
     <p>Content goes here</p>
   </div>
