@@ -1,0 +1,33 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+nav{
+  width: 100%;
+  display: block;
+  background: #eee;
+  padding: 4px 24px;
+}
+
+nav a {
+  display: inline-block;
+  padding: 12px 24px 12px 12px;
+  text-decoration: none;
+  color: #999;
+  font-family: arial;
+  transition: color .3s ease;
+}
+
+nav a:hover {
+  color: #333;
+}
+
+nav a.active {
+  color: #000;
+  font-weight: bold;
+}
+
+.content{
+  padding: 24px;
+}
