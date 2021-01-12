@@ -6,7 +6,6 @@ import '../style.css';
 export default class Home extends React.Component {
   constructor(props){
     super(props);
-    //alert("hello!");
     this.state = {
         people: [
           {id: "01", name: "Josh"},
@@ -16,37 +15,24 @@ export default class Home extends React.Component {
         things:[
           {id: "01", name: "Foxy", description: "Rex's favorite toy and BFF"},
           {id: "02", name: "Whitepaw", description: "Rex's Whitepaw toy"},
-          {id: "03", name: "Couch", description: "A big fluffy couch" }
+          {id: "03", name: "Couch", description: "A big fluffy couch" },
+          {id: "04", name: "Coffee Maker", description: "Lets make a laté" }
         ],
         friends:[]
 
     }
-    this.addFriend = this.addFriend.bind(this)
   }
 
   componentDidMount() {
         this.setState({
+          //add friends when the component mounts
           friends: [
           {id: "01", name: "Erik"},
           {id: "02", name: "Abby"},
           {id: "03", name: "Frannie"},
+          {id: "04", name: "Rex"}
         ]
         });
-    }
-
-    addFriend(){
-      const apiUrl = 'https://api.weatherapi.com/v1/current.json?key=d5c90f6ceef249ee9e9211459210901&q=Cancun'
-
-      fetch(apiUrl)
-        .then((response) => response.json())
-        .then((data) => {
-            this.setState({
-              friends: [
-                ...this.state.friends,
-                {id: "05", name: data.current.feelslike_f}
-                ]
-             })
-         })
     }
 
   render(){
@@ -54,21 +40,33 @@ export default class Home extends React.Component {
     return(
       <div>
         <Nav/>
-        <div class="content">
+        <div className="content">
           <h2>This is Page Two.</h2>
-          <button onClick={this.addFriend}>Add Friend</button>
           <h4>People</h4>
-          {this.state.people.map((person) => (
-              <p key={person.id}>{person.id} - {person.name}</p>
+          <table>
+            <thead>
+            <tr>
+              <td width="100px">ID</td>
+              <td>Name</td>
+            </tr>
+            </thead>
+            <tbody>
+          {this.state.people.map((item) => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.name}</td>
+              </tr>
           ))}
+          </tbody>
+          </table>
           <h4>Things</h4>
-          {this.state.things.map((thing) => (
-              <p key={thing.id}>{thing.id} - <b>{thing.name}</b>, {thing.description}</p>
+          {this.state.things.map((item) => (
+              <p key={item.id}>{item.id} - <b>{item.name}</b> –– {item.description}</p>
           ))}
 
           <h4>Friends</h4>
-          {this.state.friends.map((friend) => (
-              <p key={friend.id}>{friend.id} - <b>{friend.name}</b></p>
+          {this.state.friends.map((item) => (
+              <p key={item.id}>{item.id} - <b>{item.name}</b></p>
           ))}
         </div>
       </div>

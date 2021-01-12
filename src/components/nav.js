@@ -6,7 +6,7 @@ export default function Nav() {
   <nav>
     <Link activeClassName="active" to="/">Home</Link>
     <Link activeClassName="active" to="/pagetwo">Local Data</Link>
-    <Link activeClassName="active" to="/pagethree">Page three</Link>
+    <Link activeClassName="active" to="/pagethree">Fetch API Data</Link>
   </nav>
   )
 
